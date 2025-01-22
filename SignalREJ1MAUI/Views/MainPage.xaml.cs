@@ -8,24 +8,37 @@ namespace SignalREJ1MAUI.Views
         private readonly HubConnection _connection;
         public MainPage()
         {
+            List<MensajeUsuario> mensajitos = new List<MensajeUsuario>();
             InitializeComponent();
             _connection = new HubConnectionBuilder()
-                .WithUrl("http://192.168.1.139:7141/chat")
+                .WithUrl("https://localhost:7141/chathub")
                 .Build();
 
-            _connection.On<MensajeUsuario>("MessageReceived", (message) => {
-                chatMessages.Text += $"{Environment.NewLine}{message.NombreUsuario}: {message.MsgUsuario}";
+            mensajes.ItemsSource = mensajitos;
+
+            _connection.On<MensajeUsuario>("ReceiveMessage", (message) =>
+            {
+                mensajitos.Add(message);
+
             });
             Task.Run(() =>
             {
                 Dispatcher.Dispatch(async () =>
                 await _connection.StartAsync());
             });
+
         }
 
         private async void sendButton_Clicked(object sender, EventArgs e)
         {
-            await _connection.InvokeCoreAsync("SendMessage", args: new[] { new MensajeUsuario(myUsername.Text,myChatMessage.Text) });
+            if (_connection.State == HubConnectionState.Connected)
+            {
+                await _connection.InvokeCoreAsync("SendMessage", args: new[] { new MensajeUsuario(myUsername.Text, myChatMessage.Text) });
+            }
+            else {
+                await _connection.StartAsync();
+                await _connection.InvokeCoreAsync("SendMessage", args: new[] { new MensajeUsuario(myUsername.Text, myChatMessage.Text) });
+            }
 
             myChatMessage.Text = String.Empty;
         }
