@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
 using Models;
+using System.Collections.ObjectModel;
 
 namespace SignalREJ1MAUI.Views
 {
@@ -8,7 +9,7 @@ namespace SignalREJ1MAUI.Views
         private readonly HubConnection _connection;
         public MainPage()
         {
-            List<MensajeUsuario> mensajitos = new List<MensajeUsuario>();
+            ObservableCollection<MensajeUsuario> mensajitos = new ObservableCollection<MensajeUsuario>();
             InitializeComponent();
             _connection = new HubConnectionBuilder()
                 .WithUrl("https://localhost:7141/chathub")
@@ -18,7 +19,10 @@ namespace SignalREJ1MAUI.Views
 
             _connection.On<MensajeUsuario>("ReceiveMessage", (message) =>
             {
-                mensajitos.Add(message);
+               Dispatcher.Dispatch(() =>
+                {
+                    mensajitos.Add(message);
+                });
 
             });
             Task.Run(() =>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SignalREJ1MAUI.Views.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label Text="LigmaR" FontSize="50" FontAttributes="Bold" TextColor="MediumPurple" HorizontalOptions="Center"></Label>
+            <Label Text="Group" FontSize="20" HorizontalOptions="Center"></Label>
+            <Entry MaximumWidthRequest="300"></Entry>
+            <Label Text="Username" FontSize="20" HorizontalOptions="Center"></Label>
+            <Entry MaximumWidthRequest="300"></Entry>
+            <Button Text="Login" MaximumWidthRequest="120"></Button>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

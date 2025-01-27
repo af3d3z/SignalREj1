@@ -11,7 +11,10 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding NombreUsuario, StringFormat='{0} '} {Binding MsgUsuario}"  FontSize="20" TextColor="White"/>
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding NombreUsuario}" ></Label>
+                                <Label Text="{Binding MsgUsuario}"></Label>
+                            </HorizontalStackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
