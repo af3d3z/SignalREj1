@@ -1,4 +1,5 @@
 ﻿using SignalREJ1MAUI.Models.Utilidades;
+using SignalREJ1MAUI.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace SignalREJ1MAUI.Model.ViewModels
             return canExecute;
         }
 
-        private async void Login_Execute() { 
+        private async void Login_Execute() {
+            await Application.Current.MainPage.Navigation.PushAsync(new Chat(NombreUsuario, NombreGrupo));
         }
     }
 }

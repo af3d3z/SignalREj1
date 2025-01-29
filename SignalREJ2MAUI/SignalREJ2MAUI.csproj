@@ -67,4 +67,10 @@
 	  <ProjectReference Include="..\Models\Models.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Views\Chat.xaml">
+	    <Generator></Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

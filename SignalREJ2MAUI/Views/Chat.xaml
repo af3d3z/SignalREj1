@@ -1,0 +1,49 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SignalREJ1MAUI.Views.Chat"
+             BackgroundColor="White"
+             Title="Nombre Grupo">
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <StackLayout Orientation="Vertical">
+                <Label Text="{Binding NombreGrupo}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="Purple" />
+            </StackLayout>
+
+            <ScrollView Grid.Row="1" Margin="0,20,0,70">
+                <VerticalStackLayout>
+                    <Label Text="NombrePersona"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="Black" />
+                    <Label Text="Mensaje"
+                           FontSize="16"
+                           TextColor="Gray" />
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <Grid VerticalOptions="End" Margin="0,0,0,10" RowDefinitions="Auto" ColumnDefinitions="*, Auto">
+                <Entry Placeholder="Escribe un mensaje..."
+                       FontSize="14"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Center"
+                       HeightRequest="40"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       Margin="0,0,5,0"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center" />
+                <Button Text="📤"
+                        BackgroundColor="Purple"
+                        TextColor="White"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
