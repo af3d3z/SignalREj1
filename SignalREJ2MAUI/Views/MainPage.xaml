@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vmodel="clr-namespace:SignalREJ1MAUI.Model.ViewModels"
              x:Class="SignalREJ1MAUI.Views.MainPage">
+    <ContentPage.BindingContext>
+        <vmodel:MainVM></vmodel:MainVM>
+    </ContentPage.BindingContext>
 
     <ScrollView>
         <VerticalStackLayout
